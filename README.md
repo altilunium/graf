@@ -5,4 +5,4 @@ Cytoscape.js-based graph parser
 `nodeA,edge1,nodeB`
 
 ## Demo
-https://altilunium.github.io/ggraph/a.html
+https://altilunium.github.io/ggraph/
