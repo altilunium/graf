@@ -1,0 +1,280 @@
+<script src="c.js"></script>
+<style>
+	#cy {
+  width: 100%;
+  height: 100%;
+  display: fixed;
+  top: 0px;
+  left: 0px;
+}
+</style>
+<div id="cy"></div>
+<script>
+var cy = cytoscape({
+  container: document.getElementById('cy'), // container to render in
+
+  elements: [ // list of graph elements to start with
+    
+  ],
+
+  style: [ // the stylesheet for the graph
+    {
+      selector: 'node',
+      style: {
+        'background-color': '#666',
+        'label': 'data(id)'
+      }
+    },
+
+    {
+      selector: 'edge',
+      style: {
+        'width': 3,
+        'line-color': '#ccc',
+        'target-arrow-color': '#ccc',
+        'target-arrow-shape': 'triangle',
+        'curve-style': 'bezier'
+      }
+    },
+
+    {
+      selector: 'edge[class="anime_studio"]',
+      style: {
+        'width': 3,
+        'line-color': 'red',
+        'target-arrow-color': 'red',
+        'target-arrow-shape': 'triangle',
+        'curve-style': 'bezier'
+      }
+    },
+    {
+      selector: 'node[class="anime_studio"]',
+      style: {
+        'background-color': 'red'
+        
+      }
+    },
+
+
+{
+      selector: 'edge[class="manga_publisher"]',
+      style: {
+        'width': 3,
+        'line-color': 'green',
+        'target-arrow-color': 'green',
+        'target-arrow-shape': 'triangle',
+        'curve-style': 'bezier'
+      }
+    },
+    {
+      selector: 'node[class="manga_publisher"]',
+      style: {
+        'background-color': 'green'
+        
+      }
+    },
+
+    {
+      selector: 'edge[class="business"]',
+      style: {
+        'width': 3,
+        'line-color': 'black',
+        'target-arrow-color': 'black',
+        'target-arrow-shape': 'triangle',
+        'curve-style': 'bezier'
+      }
+    },
+    {
+      selector: 'node[class="business"]',
+      style: {
+        'background-color': 'black'
+        
+      }
+    },
+
+    {
+      selector: 'edge[class="ex"]',
+      style: {
+        'width': 3,
+        'line-color': 'yellow',
+        'target-arrow-color': 'yellow',
+        'target-arrow-shape': 'triangle',
+        'curve-style': 'bezier'
+      }
+    },
+
+
+
+
+
+
+    {
+      selector: 'edge[class="LN_publisher"]',
+      style: {
+        'width': 3,
+        'line-color': 'blue',
+        'target-arrow-color': 'blue',
+        'target-arrow-shape': 'triangle',
+        'curve-style': 'bezier'
+      }
+    },
+    {
+      selector: 'node[class="LN_publisher"]',
+      style: {
+        'background-color': 'blue'
+        
+      }
+    }
+
+
+
+  ],
+
+  layout: {
+    name: 'grid',
+    rows: 1
+  }
+
+});
+
+
+function addNode(x,a){
+	cy.add({group:'nodes',data:{id:x,class:a}})
+}
+
+function addEdge(x,a,y){
+	cy.add({group:'edges',data:{l:a,source:x,target:y,class:a}})
+}
+
+function lay(){
+	var layout = cy.layout({
+  name: 'cose'
+});
+
+layout.run();
+}
+
+
+var cc = `
+AIC,anime_studio,Oreimo
+AIC,anime_studio,Acchi Kocchi
+AIC,anime_studio,Humanity Has Declined
+AIC,anime_studio,Kotoura-san
+White Fox,anime_studio,Hataraku Maou-Sama
+A-1 Pictures,anime_studio,86
+A-1 Pictures,anime_studio,Oreimo
+A-1 Pictures,anime_studio,Kaguya-sama
+JC Staff,anime_studio,Sakurasou
+JC Staff,anime_studio,Toradora
+Madhouse,anime_studio,Hunter x Hunter
+OLM,anime_studio,Odd Taxi
+Bones,anime_studio,Fullmetal Alchemist
+Wit Studio,anime_studio,SPY x FAMILY
+Wit Studio,anime_studio,Ousama Ranking
+Cloverworks,anime_studio,SPY x FAMILY
+Silver Link,anime_studio,Non Non Biyori
+Kyoto Animation,anime_studio,Nichijou
+Monthly Shonen Ace,manga_publisher,Nichijou
+Monthly Comic Alive,manga_publisher,Non Non Biyori
+Mangahack,manga_publisher,Ousama Ranking
+Shonen Jump+,manga_publisher,SPY x FAMILY
+Weekly Shonen Jump,manga_publisher,Naruto
+Weekly Shonen Jump,manga_publisher,One Piece
+Weekly Shonen Jump,manga_publisher,Hunter x Hunter
+Monthly Shonen Gangan,manga_publisher,Fullmetal Alchemist
+Gangan Online,manga_publisher,Danshi Kokosei no Nichijou
+Weekly Young Jump,manga_publisher,Kaguya-sama
+Toei Animation,anime_studio,One Piece
+Pierrot,anime_studio,Naruto
+Dengeki Bunko,LN_publisher,86
+Dengeki Bunko,LN_publisher,Hataraku Maou-Sama
+Dengeki Bunko,LN_publisher,Eromanga Sensei
+Dengeki Bunko,LN_publisher,Sakurasou
+Dengeki Bunko,LN_publisher,Spice and Wolf
+Dengeki Bunko,LN_publisher,SAO
+Dengeki Bunko,LN_publisher,Toaru
+Dengeki Bunko,LN_publisher,Toradora
+Dengeki Bunko,LN_publisher,Oreimo
+Gagaga Bunko,LN_publisher,Humanity Has Declined
+Square Enix,business,Monthly Shonen Gangan
+Square Enix,business,Gangan Online
+Weekly Shonen Jump,manga_publisher,Act Age
+Weekly Shonen Jump,manga_publisher,Assassination Classroom
+Weekly Shonen Jump,manga_publisher,Bakuman
+Weekly Shonen Sunday,manga_publisher,Komi-san
+Weekly Shonen Sunday,manga_publisher,Detective Conan
+Weekly Shonen Sunday,manga_publisher,Tonikaku Kawaii
+Weekly Shonen Sunday,manga_publisher,Maoujou de Oyasumi
+Weekly Shonen Magazine,manga_publisher,Kanojo Okarishimasu
+Weekly Shonen Magazine,manga_publisher,Edens Zero
+Weekly Shonen Magazine,manga_publisher,Kanojo mo Kanojo
+Megami Magazine,manga_publisher,Kotoura-san 
+
+
+
+Manga Time Kirara Carat,manga_publisher,Machikado Mazoku
+JC Staff,anime_studio,Machikado Mazoku
+
+Young Animal,manga_publisher,Berserk
+Jump Square,manga_publisher,Binbogami Ga
+Monthly Comic Alive,manga_publisher,Haganai
+Sunrise,anime_studio,Binbogami Ga
+Sunrise,anime_studio,Danshi Kokosei no Nichijou
+OLM,anime_studio,Berserk
+OLM,anime_studio,Pokemon
+OLM,anime_studio,Komi-san
+TMS,anime_studio,Detective Conan
+TMS,anime_studio,Kanojo Okarishimasu
+Doga Kobo,anime_studio,Maoujou de Oyasumi
+Seven Arcs,anime_studio,Tonikaku Kawaii
+
+JC Staff,anime_studio,Bakuman
+Lerche,anime_studio,Assassination Classroom
+Weekly Young Jump,manga_publisher,B Gata H Kei
+Hal Film Maker,anime_studio,B Gata H Kei
+MF Bunko J,LN_publisher,Haganai
+AIC,anime_studio,Haganai
+Shueisha,business,Shonen Jump+
+Shueisha,business,Weekly Shonen Jump
+Shueisha,business,Weekly Young Jump
+Shueisha,business,Jump Square
+Shogakukan,business,Weekly Shonen Sunday
+Shogakukan,business,Gagaga Bunko
+Kadokawa,business,Monthly Comic Alive
+Kadokawa,business,Dengeki Bunko
+Kadokawa,business,Monthly Shonen Ace
+Kadokawa,business,MF Bunko J
+Kodansha,business,Weekly Shonen Magazine
+Toei Animation,ex,Hal Film Maker
+Pierrot,ex,Seven Arcs
+`
+
+
+
+cc = cc.split(/\r?\n/)
+cc = cc.filter(e=>e)
+console.log(cc)
+cc.forEach(processing)
+
+function processing(v,i,a){
+  var nya = v.split(",")
+  console.log(nya)
+  try {addNode(nya[0],nya[1])}catch(err){}
+
+    if (nya[2] == "business"){
+      try {addNode(nya[2],"business")}catch(err){}
+    }
+    else{
+      try {addNode(nya[2],"anime")}catch(err){}
+    }
+    
+
+    addEdge(nya[0],nya[1],nya[2])
+}
+
+
+
+lay()
+
+
+</script>
